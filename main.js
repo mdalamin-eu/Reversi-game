@@ -54,3 +54,30 @@ function drawSquare(row,col){
     ctx.strokeStyle="blank";
     ctx.strokeRect(col* blocksize,row*blocksize,blocksize,blocksize);
 }
+
+function drawCircle(row,col,fillcolor){
+    ctx.beginPath();
+    ctx.arc(col * blocksize + blocksize/2, row * blocksize + blocksize/2, blocksize/2, 0, 2 * Math.PI);
+    ctx.stroke();
+    ctx.fillStyle = fillcolor;
+    ctx.fill();
+}
+
+function drawSmallCircle(row,col,fillcolor){
+    ctx.beginPath();
+    ctx.arc(col*blocksize+blocksize/2, row*blocksize+blocksize/2,blocksize/8,0,2*Math.PI);
+    ctx.stroke();
+    ctx.fillStyle=fillcolor;
+    ctx.fill();
+}
+
+function display(){
+    var row,col;
+    for (row = 0; row < 8; row++){
+        for (col = 0; col < 8; col++){
+        drawSquare(row,col);
+        if(board[row][col]===0) drawCircle(row,col,"white");
+        if(board[row][col]===1) drawCircle(row,col,"black");
+    }
+}
+}
